@@ -1,2 +1,2 @@
 # hempTools
-Tolls for hemp projects
+Tools for hemp projects
