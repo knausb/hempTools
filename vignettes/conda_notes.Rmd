@@ -1,0 +1,89 @@
+---
+title: "conda_notes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{conda_notes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(hempTools)
+```
+
+
+
+The 'conda' environment, and it's variants such as anaconda and miniconda, allows the user to spawn an environment that allows them to make version specific installations of software.
+Because this occurs in an 'environment' instead of on the main system, it allows for this system to be deployed on shared computing systems.
+This document contains notes on the use of these environments.
+
+
+## Links
+
+
+[conda user's guide](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html)    
+
+[CQLS conda tutorial](https://software.cqls.oregonstate.edu/tips/posts/conda-tutorial/)    
+
+
+## A conda session
+
+
+The conda system does not appear to work well with csh/tcsh, so on our HPC we use bash.
+
+
+```
+bash
+conda --version
+```
+
+
+To update conda use the following.
+
+
+```
+conda update conda
+```
+
+
+To see a list of all your environments, type:
+
+```
+conda info --envs
+```
+
+
+To create an environment named 'snowflakes' and installs biopython, use the following.
+
+
+```
+conda create --name snowflakes biopython
+```
+
+
+To use, or "activate" the new environment, type the following
+
+
+```
+conda activate snowflakes
+```
+
+
+Create an environment named 'snakes' that uses python 3.9.
+
+
+```
+conda create --name snakes python=3.9
+```
+
+
+
+
+
