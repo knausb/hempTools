@@ -12,7 +12,7 @@ read_stockholm(file)
 \url{https://en.wikipedia.org/wiki/Stockholm_format}}
 }
 \value{
-An invisible NULL.
+A list.
 }
 \description{
 Read Stockholm format data

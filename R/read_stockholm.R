@@ -7,7 +7,7 @@
 #' 
 #' \url{https://en.wikipedia.org/wiki/Stockholm_format}
 #' 
-#' @return An invisible NULL.
+#' @return A list.
 #' 
 #' @examples
 #' # read_stockholm()
