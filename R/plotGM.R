@@ -22,6 +22,7 @@
 #'   class = "map")
 #' p <- plotGM(fake_gm)
 #' p
+#' library(ggplot2)
 #' p <- p + ggtitle("Best linkage map ever")
 #' p
 #' p <- p + annotate(geom="text", x=2.4, y=25, label="Super\nmarker",
@@ -37,7 +38,7 @@
 #' 
 #' @export
 plotGM <- function( map ) {
-  require(ggplot2)
+  # require(ggplot2)
   #max_gd <- max(unlist(lapply(map, max)))
   
   if( inherits( map, "cross" ) ){
@@ -61,9 +62,9 @@ plotGM <- function( map ) {
   chr_df$chrn <- as.numeric( chr_df$chrf )
   
   chrom_wid <- 0.02
-  p <- ggplot()
-  p <- p + geom_rect( data = chr_df, 
-                             aes( xmin = chrn - chrom_wid,
+  p <- ggplot2::ggplot()
+  p <- p + ggplot2::geom_rect( data = chr_df, 
+                               ggplot2::aes( xmin = chrn - chrom_wid,
                                   xmax = chrn + chrom_wid,
                                   #xmin = as.numeric(as.factor(chr)) - chrom_wid,
                                   #xmax = as.numeric(as.factor(chr)) + chrom_wid,
@@ -77,8 +78,8 @@ plotGM <- function( map ) {
   
   marker_wid <- 0.1
   marker_high <- 0.4
-  p <- p + geom_rect( data = marker_df, 
-                      aes( xmin = chromn - marker_wid,
+  p <- p + ggplot2::geom_rect( data = marker_df, 
+                      ggplot2::aes( xmin = chromn - marker_wid,
                            xmax = chromn + marker_wid, 
                            #xmin = as.numeric(as.factor(chrom)) - marker_wid,
                            #xmax = as.numeric(as.factor(chrom)) + marker_wid,
@@ -87,20 +88,20 @@ plotGM <- function( map ) {
   )
   # 
   # p <- p + scale_y_reverse( breaks = seq(0, 2e3, by = 100) )
-  p <- p + scale_y_reverse( minor_breaks = seq(0, 2e3, by = 20), breaks = seq(0, 2e3, by = 100) )
+  p <- p + ggplot2::scale_y_reverse( minor_breaks = seq(0, 2e3, by = 20), breaks = seq(0, 2e3, by = 100) )
   #p <- p + scale_x_continuous( breaks = as.numeric(as.factor(chr_df$chr) ) )
-  p <- p + scale_x_continuous( breaks = chr_df$chrn, labels = chr_df$chr )
+  p <- p + ggplot2::scale_x_continuous( breaks = chr_df$chrn, labels = chr_df$chr )
   # p <- p + scale_y_reverse(limits = c(max_gd, 0))
   # p <- p + scale_y_reverse(limits = c(0, max_gd))
   #p <- p + theme_bw() + theme( panel.grid.minor = element_blank() )
-  p <- p + theme_bw() + 
-    theme( panel.grid.minor.x = element_blank(), 
-           panel.grid.major.y = element_line( size = 0.4, color = "#C0C0C0", linetype = 1 ),
-           panel.grid.minor.y = element_line( size = 0.4, color = "#C0C0C0", linetype = 3 )
+  p <- p + ggplot2::theme_bw() + 
+    ggplot2::theme( panel.grid.minor.x = ggplot2::element_blank(), 
+           panel.grid.major.y = ggplot2::element_line( size = 0.4, color = "#C0C0C0", linetype = 1 ),
+           panel.grid.minor.y = ggplot2::element_line( size = 0.4, color = "#C0C0C0", linetype = 3 )
           )
-  p <- p + xlab("Chromosome")
+  p <- p + ggplot2::xlab("Chromosome")
   #p <- p + ylab("Distance (cM)")
-  p <- p + ylab("Location (cM)")
+  p <- p + ggplot2::ylab("Location (cM)")
   #p
   
 

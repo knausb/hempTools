@@ -24,7 +24,7 @@ read_blast <- function( file ) {
   
   
   #library(readr)
-  require(readr)
+  #require(readr)
   bout <- readr::read_csv(file = file, 
                           col_names = colnames1,
                           show_col_types = FALSE

@@ -36,16 +36,16 @@ ideo <- function( chroms = NULL ) {
        xaxt = "n", yaxt = "n",
        frame.plot = FALSE)
   
-  axis(side = 1, at = 1:nrow(nuc), labels = c(1:9, "X"), 
+  graphics::axis(side = 1, at = 1:nrow(nuc), labels = c(1:9, "X"), 
        mgp = c(3, 0.4, 0), tcl = -0.2)
-  title(xlab = "Chromosome", line = 1.4)
-  axis(side = 2, at = seq(0, 100e6, by = 10e6), labels = (0:10)*10, las = 2)
-  title(ylab = "Position (Mbp)")
-  abline(h = seq(0, 100e6, by = 10e6), col = "#C0C0C088")
+  graphics::title(xlab = "Chromosome", line = 1.4)
+  graphics::axis(side = 2, at = seq(0, 100e6, by = 10e6), labels = (0:10)*10, las = 2)
+  graphics::title(ylab = "Position (Mbp)")
+  graphics::abline(h = seq(0, 100e6, by = 10e6), col = "#C0C0C088")
 
   chrmw <- 0.05
   
-  rect(xleft  = 1:nrow(nuc) - chrmw,
+  graphics::rect(xleft  = 1:nrow(nuc) - chrmw,
        ybottom = rep(1, times = nrow(nuc)), 
        xright = 1:nrow(nuc) + chrmw,
        ytop   =  nuc$Length[1:nrow(nuc)],

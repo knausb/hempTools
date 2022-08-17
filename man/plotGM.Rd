@@ -28,6 +28,7 @@ fake_gm <- structure(
   class = "map")
 p <- plotGM(fake_gm)
 p
+library(ggplot2)
 p <- p + ggtitle("Best linkage map ever")
 p
 p <- p + annotate(geom="text", x=2.4, y=25, label="Super\nmarker",

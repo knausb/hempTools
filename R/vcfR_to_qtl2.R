@@ -26,7 +26,7 @@ vcfR_to_qtl2 <- function( vcf,
   my_bialleles <- vcfR::is.biallelic(vcf)
   vcf <- vcf[my_bialleles, ]
   
-  gt <- extract.gt(vcf)
+  gt <- vcfR::extract.gt(vcf)
   
   if( geno_file == TRUE){
     gt <- cbind(rownames(gt), gt)
@@ -37,7 +37,7 @@ vcfR_to_qtl2 <- function( vcf,
       gt <- base::t(gt)
     }
     
-    write.table(gt,
+    utils::write.table(gt,
                 paste(prefix, "_geno_file.csv", sep = ""),
                 sep = ",",
                 row.names = FALSE, col.names = FALSE,
@@ -49,7 +49,7 @@ vcfR_to_qtl2 <- function( vcf,
     colnames(pmap) <- c("marker", "chr", "pos")
     pmap[, "pos"] <- as.numeric(pmap[, "pos"])/1e6
     
-    write.table(pmap,
+    utils::write.table(pmap,
                 paste(prefix, "_pmap_file.csv", sep = ""),
                 sep = ",",
                 row.names = FALSE,
