@@ -7,10 +7,10 @@
 plotGM(map)
 }
 \arguments{
-\item{map}{A genetic map.}
+\item{map}{An object of class "cross" from the package 'qtl' or a list of vectors.}
 }
 \value{
-A NULL.
+A ggplot object.
 }
 \description{
 Plot a genetic map
@@ -26,7 +26,19 @@ fake_gm <- structure(
     `3` = structure(c(D3M227 = 0, D3M10 = 19.7, D3M17 = 32.8), class = "A"),
     `4` = structure(c(D4M286 = 0, D4M145 = 20.7, D4M12 = 36, D4M310 = 52.4), class = "A")),
   class = "map")
-plotGM(fake_gm)
+p <- plotGM(fake_gm)
+p
+p <- p + ggtitle("Best linkage map ever")
+p
+p <- p + annotate(geom="text", x=2.4, y=25, label="Super\nmarker",
+                  color="red", size = 3)
+p
+p + annotate(geom="rect", xmin = 1.5, xmax = 2.4, ymin = 40, ymax = 60,
+             color="red", size = 1, fill = NA)
+
+
+
+
 
 
 }

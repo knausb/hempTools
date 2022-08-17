@@ -2,12 +2,12 @@
 
 #' Plot a genetic map
 #' 
-#' @param map A genetic map.
+#' @param map An object of class "cross" from the package 'qtl' or a list of vectors.
 #' 
 #' 
 #' 
 #' 
-#' @return A NULL.
+#' @return A ggplot object.
 #' 
 #' @examples
 #' 
@@ -20,7 +20,19 @@
 #'     `3` = structure(c(D3M227 = 0, D3M10 = 19.7, D3M17 = 32.8), class = "A"),
 #'     `4` = structure(c(D4M286 = 0, D4M145 = 20.7, D4M12 = 36, D4M310 = 52.4), class = "A")),
 #'   class = "map")
-#' plotGM(fake_gm)
+#' p <- plotGM(fake_gm)
+#' p
+#' p <- p + ggtitle("Best linkage map ever")
+#' p
+#' p <- p + annotate(geom="text", x=2.4, y=25, label="Super\nmarker",
+#'                   color="red", size = 3)
+#' p
+#' p + annotate(geom="rect", xmin = 1.5, xmax = 2.4, ymin = 40, ymax = 60,
+#'              color="red", size = 1, fill = NA)
+#' 
+#' 
+#' 
+#' 
 #' 
 #' 
 #' @export
@@ -77,14 +89,14 @@ plotGM <- function( map ) {
   # p <- p + scale_y_reverse( breaks = seq(0, 2e3, by = 100) )
   p <- p + scale_y_reverse( minor_breaks = seq(0, 2e3, by = 20), breaks = seq(0, 2e3, by = 100) )
   #p <- p + scale_x_continuous( breaks = as.numeric(as.factor(chr_df$chr) ) )
-  p <- p + scale_x_continuous( breaks = chr_df$chrn )
+  p <- p + scale_x_continuous( breaks = chr_df$chrn, labels = chr_df$chr )
   # p <- p + scale_y_reverse(limits = c(max_gd, 0))
   # p <- p + scale_y_reverse(limits = c(0, max_gd))
   #p <- p + theme_bw() + theme( panel.grid.minor = element_blank() )
   p <- p + theme_bw() + 
     theme( panel.grid.minor.x = element_blank(), 
            panel.grid.major.y = element_line( size = 0.4, color = "#C0C0C0", linetype = 1 ),
-           panel.grid.minor.y = element_line( size = 0.4, color = "#C0C0C0", linetype = 3 ) 
+           panel.grid.minor.y = element_line( size = 0.4, color = "#C0C0C0", linetype = 3 )
           )
   p <- p + xlab("Chromosome")
   #p <- p + ylab("Distance (cM)")
