@@ -15,6 +15,7 @@
 #' @export
 read_stockholm <- function( file ) {
   
+  # Scan entire file as a vector of characters.
   my_stk <- base::scan( file,
                         what = "character",
                         sep = "\n",
